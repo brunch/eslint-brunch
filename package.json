@@ -1,0 +1,23 @@
+{
+  "name": "eslint-brunch",
+  "version": "1.0.0",
+  "description": "Adds eslint support to brunch.",
+  "author": "Aurélien David <adavid@jolicode.com>",
+  "homepage": "https://github.com/spyl94/eslint-brunch",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:spyl94/eslint-brunch.git"
+  },
+  "main": "./lib/index",
+  "scripts": {
+    "prepublish": "rm -rf lib && coffee --bare --output lib/ src/",
+    "test": "node_modules/.bin/mocha --require test/common.js"
+  },
+  "dependencies": {
+    "babel-eslint": "^3.1.23",
+    "chalk": "^1.0.0",
+    "eslint": "^0.24.1",
+    "eslint-plugin-react": "^2.7.0",
+    "pluralize": "^1.1.2"
+  }
+}
