@@ -1,4 +1,6 @@
-chalk = require('chalk')
+chalk     = require('chalk')
+path      = require('path')
+fs        = require('fs')
 pluralize = require('pluralize')
 CLIEngine = require('eslint').CLIEngine
 
@@ -7,20 +9,38 @@ module.exports = class ESLinter
   type: 'javascript'
   extension: 'js'
 
+  constructor: (@config) ->
+    config = @config?.plugins?.eslint or {}
+    @warnOnly = config?.warnOnly ? yes
+    configFile = path.join process.cwd(), ".eslintrc"
+    @pattern = config?.pattern or /^app\/.*\.js?$/
+
+    try # read settings from .eslintrc file if exists
+      stats = fs.statSync(configFile)
+      if stats.isFile()
+        @linter = new CLIEngine()
+        @linter.getConfigForFile(configFile)
+    catch e
+      e = e.toString().replace "Error: ENOENT, ", ""
+      console.warn ".eslintrc parsing error: #{e} \nESLint will run with default options."
+      @linter = new CLIEngine({useEslintrc: false})
+
   lint: (data, path, callback) ->
-    if path.indexOf("bower_components", 0) == 0
+    result = @linter.executeOnText(data, path).results[0]
+    errorCount = result.errorCount
+
+    if errorCount is 0
       callback()
       return
 
-    linter = new CLIEngine({})
-    result = linter.executeOnText(data, path).results[0]
-    errorCount = result.errorCount
+    errorMsg = for error in result.messages
+      do (error) =>
+        """
+        #{chalk.bold error.message} (#{error.line}:#{error.column})
+        """
 
-    if errorCount > 0
-      console.warn("Linting of '#{result.filePath}' failed with #{errorCount} #{pluralize('error', errorCount)}.")
+    errorMsg.unshift "ESLint detected #{errorCount} #{pluralize('problem', errorCount)}:"
 
-      result.messages.forEach((warn) ->
-        console.warn("#{chalk.yellow warn.message} (#{warn.line}:#{warn.column})")
-      )
-
-    callback()
+    msg = errorMsg.join '\n'
+    msg = "warn: #{msg}" if @warnOnly
+    callback msg
