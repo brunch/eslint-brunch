@@ -17,7 +17,6 @@
     "babel-eslint": "^3.1.23",
     "chalk": "^1.0.0",
     "eslint": "^0.24.1",
-    "eslint-plugin-react": "^2.7.0",
     "pluralize": "^1.1.2"
   }
 }
