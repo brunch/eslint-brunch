@@ -1,6 +1,6 @@
 {
   "name": "eslint-brunch",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Adds eslint support to brunch.",
   "author": "Aurélien David <adavid@jolicode.com>",
   "homepage": "https://github.com/spyl94/eslint-brunch",
@@ -14,7 +14,6 @@
     "test": "node_modules/.bin/mocha --require test/common.js"
   },
   "dependencies": {
-    "babel-eslint": "^3.1.30",
     "chalk": "^1.1.1",
     "eslint": "^1.7.1",
     "pluralize": "^1.2.1"
