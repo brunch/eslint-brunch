@@ -1,6 +1,6 @@
 {
   "name": "eslint-brunch",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "description": "Adds eslint support to brunch.",
   "author": "Aurélien David <adavid@jolicode.com>",
   "homepage": "https://github.com/spyl94/eslint-brunch",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.1",
-    "eslint": "^1.9.0",
+    "eslint": "^1.10.3",
     "pluralize": "^1.2.1"
   }
 }
