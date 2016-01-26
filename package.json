@@ -3,10 +3,10 @@
   "version": "1.8.5",
   "description": "Adds eslint support to brunch.",
   "author": "Aurélien David <adavid@jolicode.com>",
-  "homepage": "https://github.com/spyl94/eslint-brunch",
+  "homepage": "https://github.com/brunch/eslint-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:spyl94/eslint-brunch.git"
+    "url": "git@github.com:brunch/eslint-brunch.git"
   },
   "main": "./lib/index",
   "scripts": {
