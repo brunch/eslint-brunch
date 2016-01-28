@@ -8,14 +8,14 @@
     "type": "git",
     "url": "git@github.com:brunch/eslint-brunch.git"
   },
-  "main": "./lib/index",
+  "main": "./index",
   "scripts": {
-    "prepublish": "rm -rf lib && coffee --bare --output lib/ src/",
-    "test": "node_modules/.bin/mocha --require test/common.js"
+    "test": "node_modules/.bin/eslint index.js"
   },
   "dependencies": {
     "chalk": "^1.1.1",
     "eslint": "^1.10.3",
-    "pluralize": "^1.2.1"
+    "pluralize": "^1.2.1",
+    "eslint": "^1.10.3"
   }
 }
