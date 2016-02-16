@@ -8,11 +8,11 @@ const CLIEngine = require('eslint').CLIEngine;
 
 class ESLinter {
   constructor(config1) {
-    this.config = config1 || {};
-    const config = this.config.plugins && this.config.plugins.eslint || {};
-    this.warnOnly = this.config.warnOnly != null ? config.warnOnly : true;
+    this.config = brunchConfig || {};
+    const config = brunchConfig.plugins && brunchConfig.plugins.eslint || {};
+    this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
     const configFile = path.join(process.cwd(), '.eslintrc');
-    this.pattern = this.config.pattern || /^app\/.*\.js?$/;
+    this.pattern = config.pattern || /^app\/.*\.js?$/;  
     try {
       const stats = fs.statSync(configFile);
       if (stats.isFile()) {
