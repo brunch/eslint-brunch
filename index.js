@@ -7,12 +7,12 @@ const pluralize = require('pluralize');
 const CLIEngine = require('eslint').CLIEngine;
 
 class ESLinter {
-  constructor(config1) {
+  constructor(brunchConfig) {
     this.config = brunchConfig || {};
     const config = brunchConfig.plugins && brunchConfig.plugins.eslint || {};
     this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
     const configFile = path.join(process.cwd(), '.eslintrc');
-    this.pattern = config.pattern || /^app\/.*\.js?$/;  
+    this.pattern = config.pattern || /^app\/.*\.js?$/;
     try {
       const stats = fs.statSync(configFile);
       if (stats.isFile()) {

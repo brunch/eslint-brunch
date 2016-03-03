@@ -13,8 +13,8 @@
     "test": "node_modules/.bin/eslint index.js"
   },
   "dependencies": {
-    "chalk": "^1.1.1",
-    "pluralize": "^1.2.1",
-    "eslint": "^2.1.0"
+    "chalk": "~1.1.1",
+    "pluralize": "~1.2.1",
+    "eslint": "~2.1.0"
   }
 }
