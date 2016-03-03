@@ -15,6 +15,6 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "pluralize": "^1.2.1",
-    "eslint": "^1.10.3"
+    "eslint": "^2.1.0"
   }
 }
