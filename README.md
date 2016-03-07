@@ -4,7 +4,7 @@ Adds [ESLint](http://eslint.org) support to [brunch](http://brunch.io).
 ## Usage
 Install the plugin via npm with `npm install --save eslint-brunch`.
 
-Configuration settings should be set in your `.eslintrc` file.
+Configuration settings can be set in any acceptable `.eslintrc.*` [configration file formats](http://eslint.org/docs/user-guide/configuring#configuration-file-formats). If no configuration file can be found, this plugin will fallback to default ESLint options.
 
 ## Options
 

@@ -1,29 +1,43 @@
 'use strict';
 
 const chalk = require('chalk');
-const path = require('path');
 const fs = require('fs');
 const pluralize = require('pluralize');
 const CLIEngine = require('eslint').CLIEngine;
+
+const configFilePrefix = '.eslintrc';
 
 class ESLinter {
   constructor(brunchConfig) {
     this.config = brunchConfig || {};
     const config = brunchConfig.plugins && brunchConfig.plugins.eslint || {};
     this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
-    const configFile = path.join(process.cwd(), '.eslintrc');
     this.pattern = config.pattern || /^app\/.*\.js?$/;
+
+    var useConfig;
     try {
-      const stats = fs.statSync(configFile);
-      if (stats.isFile()) {
-        this.linter = new CLIEngine();
-        this.linter.getConfigForFile(configFile);
-      }
+      useConfig = fs.readdirSync(process.cwd())
+        .filter((filename) => filename.startsWith(configFilePrefix))
+        .filter((configFile) => {
+          try {
+            return fs.statSync(configFile).isFile();
+          } catch (_error) {
+            const e = _error.toString().replace('Error: ENOENT, ', '');
+            console.warn(`${configFile} read error: ${e}`);
+            return false;
+          }
+        })
+        .length > 0;
     } catch (_error) {
-      const e = _error.toString().replace('Error: ENOENT, ', '');
-      console.warn(`.eslintrc parsing error: ${e} \nESLint will run with default options.`);
-      this.linter = new CLIEngine({useEslintrc: false});
+      useConfig = false;
     }
+
+    if (useConfig === false) {
+      console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
+    }
+    const engineConfig = { useEslintrc: useConfig };
+
+    this.linter = new CLIEngine(engineConfig);
   }
 
   lint(data, path) {
