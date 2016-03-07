@@ -1,3 +1,6 @@
+# eslint-brunch 3.3.0
+* Update eslint to ^2.3
+
 # eslint-brunch 3.2.0
 * Add support for .eslintrc.* files
 
