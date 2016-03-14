@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "chalk": "~1.1.1",
-    "pluralize": "~1.2.1",
-    "eslint": "~2.3.0"
+    "eslint": "~2.4.0",
+    "pluralize": "~1.2.1"
   }
 }
