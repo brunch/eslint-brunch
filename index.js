@@ -12,7 +12,7 @@ class ESLinter {
     this.config = brunchConfig || {};
     const config = brunchConfig.plugins && brunchConfig.plugins.eslint || {};
     this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
-    this.pattern = config.pattern || /^app\/.*\.js?$/;
+    this.pattern = config.pattern || /^app[\/\\].*\.js?$/;
 
     var useConfig;
     try {
