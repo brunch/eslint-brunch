@@ -12,9 +12,11 @@
   "scripts": {
     "test": "node_modules/.bin/eslint index.js"
   },
+  "peerDependencies": {
+    "eslint": "~2.x"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
-    "eslint": "~2.5.0",
     "pluralize": "~1.2.1"
   }
 }
