@@ -1,3 +1,7 @@
+# eslint-brunch 3.6.0
+* Added eslint 2.x in peerDependencies
+* Removed eslint in dependencies
+
 # eslint-brunch 3.5.0
 * Update eslint to ^2.5
 
