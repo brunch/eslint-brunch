@@ -8,12 +8,16 @@ Configuration settings can be set in any acceptable `.eslintrc.*` [configration 
 
 ## Options
 
-```coffeescript
-config =
-  plugins:
-    eslint:
-      pattern: /^app\/.*\.js?$/
-      warnOnly: yes
+```javascript
+config = {
+  plugins: {
+    eslint: {
+      pattern: /^app\/.*\.js?$/,
+      warnOnly: yes,
+      config: {rules: {'array-callback-return': 'warn'}}
+    }
+  }
+}
 ```
 
 Every sub-option (`pattern`, `warnOnly`) is optional.

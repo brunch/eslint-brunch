@@ -33,7 +33,11 @@ class ESLinter {
     }
 
     if (useConfig === false) {
-      console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
+      if (typeof config.config === 'object') {
+        useConfig = config.config;
+      } else {
+        console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
+      }
     }
     const engineConfig = { useEslintrc: useConfig };
 
@@ -47,7 +51,7 @@ class ESLinter {
       return Promise.resolve();
     }
     const errorMsg = result.messages.map(error => {
-      return `${chalk.bold(error.message)} (${error.line}:${error.column})`;
+      return `${colors.blue(error.message)} (${error.line}:${error.column})`;
     });
     errorMsg.unshift(`ESLint detected ${errorCount} ${(pluralize('problem', errorCount))}:`);
     let msg = errorMsg.join('\n');
