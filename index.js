@@ -36,7 +36,7 @@ class ESLinter {
       if (typeof config.config === 'object') {
         useConfig = config.config;
       } else {
-        console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
+        // console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
       }
     }
     const engineConfig = { useEslintrc: useConfig };
