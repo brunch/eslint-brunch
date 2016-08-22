@@ -1,6 +1,6 @@
 'use strict';
 
-const chalk = require('chalk');
+const colors = require('ansicolors');
 const fs = require('fs');
 const pluralize = require('pluralize');
 const CLIEngine = require('eslint').CLIEngine;
