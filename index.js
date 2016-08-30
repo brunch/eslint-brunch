@@ -7,10 +7,9 @@ const CLIEngine = require('eslint').CLIEngine;
 
 class ESLinter {
   constructor(brunchConfig) {
-    this.config = brunchConfig || {};
-    const config = brunchConfig.plugins && brunchConfig.plugins.eslint || {};
-    this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
-    this.pattern = config.pattern || /^app[\/\\].*\.js?$/;
+    this.config   = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.eslint) || {};
+    this.warnOnly = (this.config.warnOnly === true);
+    this.pattern  = this.config.pattern || /^app[\/\\].*\.js?$/;
 
     const engineConfig = {};
 
