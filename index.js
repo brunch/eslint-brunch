@@ -1,15 +1,14 @@
 'use strict';
 
 const colors = require('ansicolors');
-const fs = require('fs');
 const pluralize = require('pluralize');
 const CLIEngine = require('eslint').CLIEngine;
 
 class ESLinter {
   constructor(brunchConfig) {
-    this.config   = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.eslint) || {};
+    this.config = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.eslint) || {};
     this.warnOnly = (this.config.warnOnly === true);
-    this.pattern  = this.config.pattern || /^app[\/\\].*\.js?$/;
+    this.pattern = this.config.pattern || /^app[\/\\].*\.js?$/;
     this.engineOptions = this.config.config || {};
     this.linter = new CLIEngine(this.engineOptions);
   }
