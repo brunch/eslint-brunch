@@ -5,8 +5,6 @@ const fs = require('fs');
 const pluralize = require('pluralize');
 const CLIEngine = require('eslint').CLIEngine;
 
-const configFilePrefix = '.eslintrc';
-
 class ESLinter {
   constructor(brunchConfig) {
     this.config = brunchConfig || {};
@@ -14,32 +12,7 @@ class ESLinter {
     this.warnOnly = config.warnOnly != null ? config.warnOnly : true;
     this.pattern = config.pattern || /^app[\/\\].*\.js?$/;
 
-    var useConfig;
-    try {
-      useConfig = fs.readdirSync(process.cwd())
-        .filter((filename) => filename.startsWith(configFilePrefix))
-        .filter((configFile) => {
-          try {
-            return fs.statSync(configFile).isFile();
-          } catch (_error) {
-            const e = _error.toString().replace('Error: ENOENT, ', '');
-            console.warn(`${configFile} read error: ${e}`);
-            return false;
-          }
-        })
-        .length > 0;
-    } catch (_error) {
-      useConfig = false;
-    }
-
-    if (useConfig === false) {
-      if (typeof config.config === 'object') {
-        useConfig = config.config;
-      } else {
-        // console.warn(`no usable .eslintrc.* file can be found.\nESLint will run with default options.`);
-      }
-    }
-    const engineConfig = { useEslintrc: useConfig };
+    const engineConfig = {};
 
     this.linter = new CLIEngine(engineConfig);
   }
