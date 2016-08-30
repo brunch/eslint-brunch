@@ -10,10 +10,8 @@ class ESLinter {
     this.config   = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.eslint) || {};
     this.warnOnly = (this.config.warnOnly === true);
     this.pattern  = this.config.pattern || /^app[\/\\].*\.js?$/;
-
-    const engineConfig = {};
-
-    this.linter = new CLIEngine(engineConfig);
+    this.engineOptions = this.config.config || {};
+    this.linter = new CLIEngine(this.engineOptions);
   }
 
   lint(data, path) {
