@@ -28,7 +28,7 @@ class ESLinter {
     if (this.warnOnly) {
       msg = `warn: ${msg}`;
     }
-    return (msg ? Promise.reject(msg) : Promise.resolve());
+    return Promise.reject(msg);
   }
 }
 
