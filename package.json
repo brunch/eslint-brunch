@@ -12,14 +12,9 @@
   "scripts": {
     "test": "node_modules/.bin/eslint index.js"
   },
-  "peerDependencies": {
-    "eslint": "~2.x || ~3.x"
-  },
   "dependencies": {
     "ansicolors": "^0.3.2",
-    "pluralize": "~1.2.1"
-  },
-  "devDependencies": {
+    "pluralize": "~1.2.1",
     "eslint": "~3.0"
   }
 }
