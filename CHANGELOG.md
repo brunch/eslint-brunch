@@ -1,3 +1,23 @@
+# eslint-brunch 3.10.0
+* Improves the logging format, with a style based on
+  [ESLint's default "stylish" formatter](http://eslint.org/docs/user-guide/formatters/#stylish)
+* Bug fix: if ESLint only reported warnings for a file (no errors),
+  then those warnings were silently discarded
+
+# eslint-brunch 3.9.1
+* Requires ESLint as a dependency instead of a peerDependency
+
+# eslint-brunch 3.9.0
+* Allows ESLint to automatically find and load all
+  [configuration files](http://eslint.org/docs/user-guide/configuring#using-configuration-files)
+  including `package.json`
+* Implements `config` plugin option, for configuring
+  [ESLint's engine](http://eslint.org/docs/developer-guide/nodejs-api#cliengine)
+
+# eslint-brunch 3.8.0
+* Uses [`ansicolors`](https://www.npmjs.com/package/ansicolors) instead of
+  [`chalk`](https://www.npmjs.com/package/chalk) for terminal colors
+
 # eslint-brunch 3.7.0
 * Allowed eslint 2.x and 3.x in peerDependencies
 
