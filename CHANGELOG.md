@@ -1,3 +1,6 @@
+# eslint-brunch 3.11.0
+* Uses the latest v3.* release of ESLint
+
 # eslint-brunch 3.10.0
 * Improves the logging format, with a style based on
   [ESLint's default "stylish" formatter](http://eslint.org/docs/user-guide/formatters/#stylish)
