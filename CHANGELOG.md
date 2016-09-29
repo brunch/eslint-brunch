@@ -1,3 +1,6 @@
+# eslint-brunch 3.11.1
+* Fix `warnOnly=true` not used as default option
+
 # eslint-brunch 3.11.0
 * Uses the latest v3.* release of ESLint
 
