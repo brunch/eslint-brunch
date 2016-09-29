@@ -20,11 +20,11 @@ config = {
 }
 ```
 
-| Option     | Type    | Optional? | Description                                                                                                 |
+| Option     | Type    | Optional | Default | Description                                                                                                 |
 |------------|---------|:---------:|-------------------------------------------------------------------------------------------------------------|
-| `pattern`  | RegExp  | Yes       | Pattern of filepaths to be processed ([docs](http://brunch.io/docs/plugins#property-pattern-)).             |
-| `warnOnly` | Boolean | Yes       | Use `warn` logging level instead of `error`.                                                                |
-| `config`   | Object  | Yes       | Options to pass to the ESLint engine ([docs](http://eslint.org/docs/developer-guide/nodejs-api#cliengine)). |
+| `pattern`  | RegExp  | Yes       | `/^app\/.*\.js?$/` | Pattern of filepaths to be processed ([docs](http://brunch.io/docs/plugins#property-pattern-)).             |
+| `warnOnly` | Boolean | Yes       | `true` | Use `warn` logging level instead of `error`.                                                                |
+| `config`   | Object  | Yes       | `{}` | Options to pass to the ESLint engine ([docs](http://eslint.org/docs/developer-guide/nodejs-api#cliengine)). |
 
 
 ## License
