@@ -13,8 +13,6 @@
     "test": "node_modules/.bin/eslint index.js"
   },
   "dependencies": {
-    "ansicolors": "^0.3.2",
-    "pluralize": "~1.2.1",
     "eslint": "^3.0"
   }
 }
