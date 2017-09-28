@@ -1,32 +1,27 @@
 'use strict';
-
-const CLIEngine = require('eslint').CLIEngine;
+const {CLIEngine} = require('eslint');
 
 class ESLinter {
-  constructor(brunchConfig) {
-    this.config = (brunchConfig && brunchConfig.plugins && brunchConfig.plugins.eslint) || {};
-    this.warnOnly = (typeof this.config.warnOnly === 'boolean') ? this.config.warnOnly : true;
-    this.pattern = this.config.pattern || /^app[\/\\].*\.js?$/;
-    this.engineOptions = this.config.config || {};
-    this.linter = new CLIEngine(this.engineOptions);
+  constructor(brunchCfg) {
+    const params = brunchCfg.plugins.eslint || {};
+    this.pattern = params.pattern || /^app\/.*\.jsx?$/;
+
+    this.engine = new CLIEngine(params.config);
+    this.formatter = CLIEngine.getFormatter(params.formatter);
+    this.warnOnly = typeof params.warnOnly === 'boolean' ? params.warnOnly : true;
   }
 
-  lint(data, path) {
-    const report = this.linter.executeOnText(data, path);
-    if (report.errorCount === 0 && report.warningCount === 0) {
-      return Promise.resolve();
-    }
-    const formatter = CLIEngine.getFormatter();
-    let msg = 'ESLint reported:\n' + formatter(report.results);
-    if (this.warnOnly) {
-      msg = `warn: ${msg}`;
-    }
-    return Promise.reject(msg);
+  lint(file) {
+    const report = this.engine.executeOnText(file.data, file.path);
+    if (!report.errorCount && !report.warningCount) return;
+
+    const msg = `ESLint reported:\n${this.formatter(report.results)}`;
+    if (this.warnOnly) throw `warn: ${msg}`;
+    throw msg;
   }
 }
 
 ESLinter.prototype.brunchPlugin = true;
 ESLinter.prototype.type = 'javascript';
-ESLinter.prototype.extension = 'js';
 
 module.exports = ESLinter;
