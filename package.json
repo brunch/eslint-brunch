@@ -9,9 +9,6 @@
     "url": "git@github.com:brunch/eslint-brunch.git"
   },
   "main": "./index",
-  "scripts": {
-    "test": "node_modules/.bin/eslint index.js"
-  },
   "dependencies": {
     "eslint": "^3.0"
   }
