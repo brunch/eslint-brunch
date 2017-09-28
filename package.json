@@ -10,6 +10,6 @@
   },
   "main": "./index",
   "dependencies": {
-    "eslint": "^3.0"
+    "eslint": "^4"
   }
 }
