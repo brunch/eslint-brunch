@@ -1,11 +1,11 @@
 {
   "name": "eslint-brunch",
-  "version": "3.12.0",
+  "version": "3.13.0",
   "description": "Adds ESLint support to Brunch.",
   "author": "Aurélien David <adavid@jolicode.com>",
   "homepage": "https://github.com/brunch/eslint-brunch",
   "repository": "brunch/eslint-brunch",
   "dependencies": {
-    "eslint": "^4"
+    "eslint": "^5"
   }
 }
