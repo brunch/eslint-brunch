@@ -2,13 +2,13 @@
 const {CLIEngine} = require('eslint');
 
 class ESLinter {
-  constructor(brunchCfg) {
-    const params = brunchCfg.plugins.eslint || {};
-    this.pattern = params.pattern || /^app\/.*\.jsx?$/;
+  constructor(config) {
+    const params = config.plugins.eslint || {};
 
     this.engine = new CLIEngine(params.config);
-    this.formatter = CLIEngine.getFormatter(params.formatter);
+    this.pattern = params.pattern || /^app\/.*\.jsx?$/;
     this.warnOnly = typeof params.warnOnly === 'boolean' ? params.warnOnly : true;
+    this.formatter = CLIEngine.getFormatter(params.formatter);
   }
 
   lint(file) {
@@ -16,8 +16,7 @@ class ESLinter {
     if (!report.errorCount && !report.warningCount) return;
 
     const msg = `ESLint reported:\n${this.formatter(report.results)}`;
-    if (this.warnOnly) throw `warn: ${msg}`;
-    throw msg;
+    throw this.warnOnly ? `warn: ${msg}` : msg;
   }
 }
 
