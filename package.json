@@ -1,6 +1,6 @@
 {
   "name": "eslint-brunch",
-  "version": "3.13.0",
+  "version": "5.0.0",
   "description": "Adds ESLint support to Brunch",
   "keywords": [
     "brunch-plugin",
