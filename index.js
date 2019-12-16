@@ -2,9 +2,8 @@
 const {CLIEngine} = require('eslint');
 
 class ESLinter {
-  constructor(config) {
+  constructor(config = {}) {
     const params = config.plugins.eslint || {};
-
     this.engine = new CLIEngine(params.config);
     this.pattern = params.pattern || /^app\/.*\.jsx?$/;
     this.warnOnly = typeof params.warnOnly === 'boolean' ? params.warnOnly : true;

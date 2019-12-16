@@ -1,6 +1,6 @@
 # eslint-brunch
 
-Adds [ESLint](http://eslint.org) support to [Brunch](http://brunch.io).
+Adds [ESLint](http://eslint.org) support to [Brunch](https://brunch.io).
 
 ## Usage
 
